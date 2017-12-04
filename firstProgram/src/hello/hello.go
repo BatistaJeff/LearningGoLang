@@ -55,14 +55,20 @@ func exibeMenu() {
 func iniciaMonitoramento() {
 	fmt.Println("Iniciando Monitoramento")
 
-	// site := "https://www.alura.com.br"
-	site := "http://random-status-code.herokuapp.com/"
-	resp, _ := http.Get(site)
+	sites := []string{"https://www.alura.com.br",
+		"http://random-status-code.herokuapp.com",
+		"https://www.google.com.br"}
 
-	if resp.StatusCode == 200 {
-		fmt.Println("--> O site: ", site, " --> Foi carregado <--")
-	} else {
-		fmt.Println("--> O site: ", site, " --> Deve estar com problemas <--")
+	for i, site := range sites {
+
+		resp, _ := http.Get(site)
+
+		if resp.StatusCode == 200 {
+			fmt.Println(i, "--> O site: ", site, " --> Foi carregado <--")
+		} else {
+			fmt.Println(i, "--> O site: ", site, " --> Deve estar com problemas <--")
+		}
+
 	}
 
 }
